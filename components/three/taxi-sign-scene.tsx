@@ -25,7 +25,7 @@ function CameraRig() {
   return null;
 }
 
-function RotatingSign({ scrollProgress }: { scrollProgress: React.MutableRefObject<number> }) {
+function RotatingSign() {
   const group = useRef<THREE.Group>(null);
   const reducedMotion = useRef(
     typeof window !== "undefined" &&
@@ -34,19 +34,15 @@ function RotatingSign({ scrollProgress }: { scrollProgress: React.MutableRefObje
 
   useFrame((state, delta) => {
     if (!group.current) return;
-    const p = reducedMotion.current ? 0 : scrollProgress.current;
-    const targetRotationY = p * Math.PI * 2;
-    const targetY = REST_Y;
-    const bob = Math.sin(state.clock.elapsedTime * 0.8) * 0.015;
 
-    group.current.rotation.y = THREE.MathUtils.damp(
-      group.current.rotation.y,
-      targetRotationY,
-      3.5,
-      delta
-    );
-    group.current.position.y =
-      THREE.MathUtils.damp(group.current.position.y, targetY, 4, delta) + bob;
+    // Continuous, steady spin — keeps flowing, never stops.
+    if (!reducedMotion.current) {
+      group.current.rotation.y += delta * 0.5;
+    }
+
+    // Gentle up-and-down float.
+    const bob = Math.sin(state.clock.elapsedTime * 1.2) * 0.06;
+    group.current.position.y = REST_Y + bob;
   });
 
   return (
@@ -108,11 +104,7 @@ class WebGLErrorBoundary extends Component<{ children: ReactNode }, { failed: bo
   }
 }
 
-export function TaxiSignScene({
-  rotationTarget,
-}: {
-  rotationTarget: React.MutableRefObject<number>;
-}) {
+export function TaxiSignScene() {
   return (
     <WebGLErrorBoundary>
       <Canvas
@@ -126,7 +118,7 @@ export function TaxiSignScene({
         <CameraRig />
         <Lighting />
         <Suspense fallback={null}>
-          <RotatingSign scrollProgress={rotationTarget} />
+          <RotatingSign />
           <ContactShadows
             position={[0, -0.31, 0]}
             opacity={0.6}

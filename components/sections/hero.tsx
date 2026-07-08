@@ -15,7 +15,6 @@ const TaxiSignScene = dynamic(
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const scrollProgress = useRef(0);
 
   useEffect(() => {
     let ticking = false;
@@ -26,7 +25,6 @@ export function Hero() {
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
-      scrollProgress.current = progress;
 
       if (textRef.current) {
         const fade = 1 - Math.min(progress / 0.55, 1);
@@ -53,7 +51,7 @@ export function Hero() {
       className="relative flex h-[100svh] w-full flex-col overflow-hidden bg-background"
     >
       <div className="absolute inset-0">
-        <TaxiSignScene rotationTarget={scrollProgress} />
+        <TaxiSignScene />
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
