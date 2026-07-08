@@ -45,6 +45,10 @@ const config: Config = {
       letterSpacing: {
         widest2: "0.25em",
       },
+      boxShadow: {
+        premium: "0 20px 40px -12px rgba(0,0,0,0.55)",
+        "navy-glow": "0 8px 30px -8px rgba(59,91,219,0.45)",
+      },
       keyframes: {
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(16px)" },
@@ -54,9 +58,19 @@ const config: Config = {
           "0%": { strokeDashoffset: "1" },
           "100%": { strokeDashoffset: "0" },
         },
+        "ken-burns": {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.08)" },
+        },
+        "pulse-ring": {
+          "0%": { boxShadow: "0 0 0 0 rgba(37,211,102,0.45)" },
+          "100%": { boxShadow: "0 0 0 14px rgba(37,211,102,0)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.8s ease-out forwards",
+        "ken-burns": "ken-burns 20s ease-out forwards",
+        "pulse-ring": "pulse-ring 2.2s cubic-bezier(0.4,0,0.6,1) infinite",
       },
     },
   },
