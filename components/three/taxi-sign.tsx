@@ -1,13 +1,13 @@
 import { RoundedBox, Text } from "@react-three/drei";
 
 const HOUSING = {
-  color: "#ffcc33",
-  emissive: "#ff9900",
-  emissiveIntensity: 0.6,
-  metalness: 0.15,
-  roughness: 0.15,
-  clearcoat: 1,
-  clearcoatRoughness: 0.1,
+  color: "#ffc21a",
+  emissive: "#ffab00",
+  emissiveIntensity: 1.15,
+  metalness: 0,
+  roughness: 0.28,
+  clearcoat: 0.8,
+  clearcoatRoughness: 0.25,
 } as const;
 
 const PANEL = {

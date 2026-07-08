@@ -56,9 +56,8 @@ export function Hero() {
         <TaxiSignScene rotationTarget={scrollProgress} />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-background/60" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_38%,rgba(6,8,16,0.82)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,7,12,0.55)_0%,transparent_22%,transparent_78%,rgba(6,7,12,0.4)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(6,8,16,0.5)_100%)]" />
 
       <div
         ref={textRef}

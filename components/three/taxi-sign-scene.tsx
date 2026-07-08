@@ -79,12 +79,13 @@ function Floor() {
 function Lighting() {
   return (
     <>
-      <ambientLight intensity={0.45} />
+      <ambientLight intensity={0.5} />
       <directionalLight position={[4, 5, 4]} intensity={1} color="#ffffff" />
       <directionalLight position={[-4, 3, -3]} intensity={0.35} color="#3b5bdb" />
+      {/* Gentle front fill so the face stays lit at every rotation angle */}
+      <directionalLight position={[2.4, 1.4, 3.4]} intensity={0.35} color="#ffffff" />
       {/* Rim light: subtle white edge highlight so the sign pops off the dark background */}
       <directionalLight position={[0, 1.6, -3.5]} intensity={0.9} color="#ffffff" />
-      <pointLight position={[0, 0.6, -1.8]} intensity={0.5} color="#ffffff" />
       <Environment resolution={256}>
         <group rotation={[-Math.PI / 2, 0, 0]}>
           <Lightformer form="rect" intensity={3.5} scale={[8, 8, 1]} position={[0, 4, -7]} />
