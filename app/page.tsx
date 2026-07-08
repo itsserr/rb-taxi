@@ -8,8 +8,8 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustBar />
-      <Services />
       <CtaSection />
+      <Services />
     </>
   );
 }

@@ -54,7 +54,7 @@ resultaat.
 
 - Next.js 15 App Router, React Server Components waar mogelijk
 - Tailwind CSS met een eigen donker/navy design-tokensysteem
-- `next/font` voor Fraunces (display) en Inter (body), zelf gehost — geen
+- `next/font` voor Playfair Display (display) en Inter (body), zelf gehost — geen
   externe font-requests tijdens runtime
 - `next/image` met remote patterns voor Unsplash
 - Metadata, `sitemap.ts` en `robots.ts` voor SEO

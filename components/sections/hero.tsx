@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
 
@@ -14,6 +14,7 @@ const CarScene = dynamic(
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   const scrollProgress = useRef(0);
 
   useEffect(() => {
@@ -24,7 +25,14 @@ export function Hero() {
       const el = sectionRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      scrollProgress.current = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+      const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+      scrollProgress.current = progress;
+
+      if (textRef.current) {
+        const fade = 1 - Math.min(progress / 0.55, 1);
+        textRef.current.style.opacity = String(fade);
+        textRef.current.style.transform = `translateY(${-progress * 34}px)`;
+      }
     }
 
     function onScroll() {
@@ -48,39 +56,52 @@ export function Hero() {
         <CarScene rotationTarget={scrollProgress} />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/5 to-background/55" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(10,11,13,0.75)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-background/60" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_38%,rgba(6,8,16,0.82)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,7,12,0.55)_0%,transparent_22%,transparent_78%,rgba(6,7,12,0.4)_100%)]" />
 
-      <div className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-start pt-28 text-center sm:pt-36">
+      <div
+        ref={textRef}
+        className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-start pt-24 text-center sm:pt-28"
+      >
         <p className="eyebrow animate-fade-up opacity-0 [animation-delay:0.1s]">
           Taxivervoer op maat
         </p>
 
-        <h1 className="mt-6 animate-fade-up font-display text-6xl italic tracking-tight text-foreground opacity-0 [animation-delay:0.25s] sm:text-7xl lg:text-8xl">
+        <h1 className="mt-7 animate-fade-up font-display text-7xl italic leading-[0.95] tracking-tight text-foreground opacity-0 [animation-delay:0.28s] sm:text-8xl lg:text-9xl">
           RB Taxi
         </h1>
 
-        <p className="mt-5 max-w-md animate-fade-up text-balance text-base leading-relaxed text-muted opacity-0 [animation-delay:0.4s] sm:text-lg">
+        <span className="mt-8 h-px w-16 origin-center animate-fade-up bg-gradient-to-r from-transparent via-navy-light to-transparent opacity-0 [animation-delay:0.42s]" />
+
+        <p className="mt-8 max-w-md animate-fade-up text-balance text-sm uppercase tracking-widest2 text-muted opacity-0 [animation-delay:0.52s] sm:text-base">
           Betrouwbare luxe taxi service
         </p>
 
-        <div className="mt-9 flex animate-fade-up flex-col items-center gap-4 opacity-0 [animation-delay:0.55s] sm:flex-row">
+        <div className="mt-12 flex animate-fade-up flex-col items-center gap-5 opacity-0 [animation-delay:0.68s]">
           <Link href="/reserveren">
-            <Button size="lg" className="px-12">
-              Boek Nu
+            <Button
+              size="lg"
+              className="group relative h-16 overflow-hidden px-14 text-base tracking-wide"
+            >
+              <span className="relative z-10 flex items-center gap-2.5">
+                Boek Nu
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+              <span className="pointer-events-none absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
             </Button>
           </Link>
           <a
             href={SITE.phoneHref}
             className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
           >
-            <Phone className="h-4 w-4" />
-            {SITE.phone}
+            <Phone className="h-3.5 w-3.5" />
+            of bel direct {SITE.phone}
           </a>
         </div>
       </div>
 
-      <div className="relative z-10 flex animate-fade-up justify-center pb-8 opacity-0 [animation-delay:0.9s] sm:pb-10">
+      <div className="relative z-10 flex animate-fade-up justify-center pb-8 opacity-0 [animation-delay:1s] sm:pb-10">
         <div className="flex flex-col items-center gap-2 text-muted-2">
           <span className="text-[10px] uppercase tracking-widest2">Scroll</span>
           <span className="h-8 w-px bg-gradient-to-b from-navy-light to-transparent" />

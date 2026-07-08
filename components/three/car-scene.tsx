@@ -118,7 +118,14 @@ export function CarScene({
 }) {
   return (
     <WebGLErrorBoundary>
-      <Canvas dpr={[1, 1.5]} gl={{ alpha: true, antialias: true }} camera={{ fov: 30 }}>
+      <Canvas
+        dpr={[1, 1.5]}
+        gl={{ alpha: true, antialias: true }}
+        camera={{ fov: 30 }}
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener("webglcontextlost", (e) => e.preventDefault());
+        }}
+      >
         <CameraRig />
         <Lighting />
         <Suspense fallback={null}>
