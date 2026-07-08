@@ -7,8 +7,8 @@ import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
 
-const CarScene = dynamic(
-  () => import("@/components/three/car-scene").then((m) => m.CarScene),
+const TaxiSignScene = dynamic(
+  () => import("@/components/three/taxi-sign-scene").then((m) => m.TaxiSignScene),
   { ssr: false }
 );
 
@@ -53,7 +53,7 @@ export function Hero() {
       className="relative flex h-[100svh] w-full flex-col overflow-hidden bg-background"
     >
       <div className="absolute inset-0">
-        <CarScene rotationTarget={scrollProgress} />
+        <TaxiSignScene rotationTarget={scrollProgress} />
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-background/60" />
@@ -74,37 +74,33 @@ export function Hero() {
 
         <span className="mt-8 h-px w-16 origin-center animate-fade-up bg-gradient-to-r from-transparent via-navy-light to-transparent opacity-0 [animation-delay:0.42s]" />
 
-        <p className="mt-8 max-w-md animate-fade-up text-balance text-sm uppercase tracking-widest2 text-muted opacity-0 [animation-delay:0.52s] sm:text-base">
-          Betrouwbare luxe taxi service
+        <p className="mt-8 max-w-lg animate-fade-up text-balance text-base leading-relaxed text-muted opacity-0 [animation-delay:0.52s] sm:text-lg">
+          Luxe en betrouwbaar taxivervoer, 24/7 beschikbaar op afspraak.
         </p>
 
-        <div className="mt-12 flex animate-fade-up flex-col items-center gap-5 opacity-0 [animation-delay:0.68s]">
-          <Link href="/reserveren">
+        <div className="mt-12 flex animate-fade-up flex-col items-center gap-4 opacity-0 [animation-delay:0.68s] sm:flex-row">
+          <Link href="/reserveren" className="w-full sm:w-auto">
             <Button
               size="lg"
-              className="group relative h-16 overflow-hidden px-14 text-base tracking-wide"
+              className="group relative h-16 w-full overflow-hidden px-12 text-base tracking-wide sm:w-auto"
             >
               <span className="relative z-10 flex items-center gap-2.5">
-                Boek Nu
+                Reserveer een rit
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
               <span className="pointer-events-none absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
             </Button>
           </Link>
-          <a
-            href={SITE.phoneHref}
-            className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
-          >
-            <Phone className="h-3.5 w-3.5" />
-            of bel direct {SITE.phone}
+          <a href={SITE.phoneHref} className="w-full sm:w-auto">
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-16 w-full px-10 text-base tracking-wide sm:w-auto"
+            >
+              <Phone className="h-4 w-4" />
+              Bel direct
+            </Button>
           </a>
-        </div>
-      </div>
-
-      <div className="relative z-10 flex animate-fade-up justify-center pb-8 opacity-0 [animation-delay:1s] sm:pb-10">
-        <div className="flex flex-col items-center gap-2 text-muted-2">
-          <span className="text-[10px] uppercase tracking-widest2">Scroll</span>
-          <span className="h-8 w-px bg-gradient-to-b from-navy-light to-transparent" />
         </div>
       </div>
     </section>

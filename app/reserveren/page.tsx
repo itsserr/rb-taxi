@@ -19,8 +19,10 @@ export default function ReserverenPage() {
           Plan uw rit
         </h1>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
-          Vul onderstaand formulier in voor ritten die u minimaal 24 uur van
-          tevoren plant. Wij bevestigen uw rit altijd telefonisch.
+          Reserveer eenvoudig uw taxirit. Reserveringen dienen minimaal 24 uur
+          vooraf te worden aangevraagd. Na ontvangst van uw aanvraag nemen wij
+          telefonisch contact met u op om de reservering definitief te
+          bevestigen.
         </p>
 
         <div className="mt-8 flex flex-col gap-4 rounded-sm border border-white/8 bg-surface px-6 py-6 sm:flex-row sm:items-center sm:justify-between">

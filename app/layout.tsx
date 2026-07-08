@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Bodoni_Moda, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 
-const playfairDisplay = Playfair_Display({
+const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
   variable: "--font-display",
   weight: ["400", "500", "600", "700"],
@@ -64,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" className={`${playfairDisplay.variable} ${inter.variable}`}>
+    <html lang="nl" className={`${bodoniModa.variable} ${inter.variable}`}>
       <body className="font-sans">
         <Header />
         <main className="min-h-screen">{children}</main>

@@ -1,3 +1,4 @@
+@import "react-day-picker/style.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,6 +56,32 @@
   .hairline {
     @apply h-px w-full bg-border;
   }
+}
+
+.rdp-rb-taxi {
+  --rdp-accent-color: #3b5bdb;
+  --rdp-accent-background-color: rgba(59, 91, 219, 0.15);
+  --rdp-today-color: #3b5bdb;
+  color: #f5f5f3;
+}
+
+.rdp-rb-taxi .rdp-weekday {
+  color: #6b7280;
+}
+
+.rdp-rb-taxi .rdp-caption_label,
+.rdp-rb-taxi .rdp-nav_button {
+  color: #f5f5f3;
+}
+
+.rdp-rb-taxi .rdp-day_button:hover:not([disabled]) {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.rdp-rb-taxi .rdp-selected .rdp-day_button {
+  background-color: #3b5bdb;
+  border: none;
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -55,7 +55,7 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-10 lg:flex">
+          <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -86,7 +86,7 @@ export function Header() {
               {SITE.phone}
             </a>
             <Link href="/reserveren">
-              <Button size="sm">Boek nu</Button>
+              <Button size="sm">Reserveer nu</Button>
             </Link>
           </div>
 
@@ -155,7 +155,7 @@ export function Header() {
             </div>
             <Link href="/reserveren">
               <Button className="w-full" size="lg">
-                Boek nu
+                Reserveer nu
               </Button>
             </Link>
           </div>

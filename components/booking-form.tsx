@@ -1,43 +1,56 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { format } from "date-fns";
+import { nl } from "date-fns/locale";
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { AddressInput } from "@/components/ui/address-input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { DatePicker } from "@/components/ui/date-picker";
 import { RouteLine } from "@/components/ui/route-line";
 import { SITE } from "@/lib/constants";
 
+const TIME_OPTIONS = Array.from({ length: 24 * 4 }, (_, i) => {
+  const hours = Math.floor(i / 4);
+  const minutes = (i % 4) * 15;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+});
+
 type FormState = {
-  voornaam: string;
-  achternaam: string;
+  naam: string;
   telefoon: string;
-  ophaaladres: string;
+  email: string;
+  ophaallocatie: string;
   bestemming: string;
-  datum: string;
+  datum: Date | undefined;
   tijd: string;
   personen: string;
+  koffers: string;
   opmerkingen: string;
 };
 
 const INITIAL_STATE: FormState = {
-  voornaam: "",
-  achternaam: "",
+  naam: "",
   telefoon: "",
-  ophaaladres: "",
+  email: "",
+  ophaallocatie: "",
   bestemming: "",
-  datum: "",
+  datum: undefined,
   tijd: "",
   personen: "1",
+  koffers: "0",
   opmerkingen: "",
 };
 
 function getMinDate() {
   const min = new Date();
+  min.setHours(0, 0, 0, 0);
   min.setDate(min.getDate() + 1);
-  return min.toISOString().split("T")[0];
+  return min;
 }
 
 export function BookingForm() {
@@ -54,17 +67,14 @@ export function BookingForm() {
   function validate(): boolean {
     const next: Partial<Record<keyof FormState, string>> = {};
 
-    if (!form.voornaam.trim()) next.voornaam = "Vul uw voornaam in.";
-    if (!form.achternaam.trim()) next.achternaam = "Vul uw achternaam in.";
+    if (!form.naam.trim()) next.naam = "Vul uw naam in.";
     if (!/^[0-9+\s()-]{8,}$/.test(form.telefoon.trim()))
       next.telefoon = "Vul een geldig telefoonnummer in.";
-    if (!form.ophaaladres.trim()) next.ophaaladres = "Vul een ophaaladres in.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      next.email = "Vul een geldig e-mailadres in.";
+    if (!form.ophaallocatie.trim()) next.ophaallocatie = "Vul een ophaallocatie in.";
     if (!form.bestemming.trim()) next.bestemming = "Vul een bestemming in.";
-    if (!form.datum) {
-      next.datum = "Kies een datum.";
-    } else if (form.datum < minDate) {
-      next.datum = "Reserveringen graag minimaal 24 uur van tevoren.";
-    }
+    if (!form.datum) next.datum = "Kies een datum.";
     if (!form.tijd) next.tijd = "Kies een tijdstip.";
 
     setErrors(next);
@@ -86,10 +96,15 @@ export function BookingForm() {
           Uw aanvraag is ontvangen
         </h3>
         <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-          Bedankt, {form.voornaam}. Wij nemen binnen enkele uren telefonisch
-          contact met u op via {form.telefoon} om uw rit op {form.datum} om{" "}
-          {form.tijd} te bevestigen.
+          Bedankt voor uw aanvraag. Wij nemen zo spoedig mogelijk telefonisch
+          contact met u op om uw reservering te bevestigen.
         </p>
+        {form.datum && (
+          <p className="mt-2 text-xs text-muted-2">
+            Gevraagde rit: {format(form.datum, "EEEE d MMMM yyyy", { locale: nl })} om{" "}
+            {form.tijd}
+          </p>
+        )}
         <Button
           variant="outline"
           className="mt-8"
@@ -146,63 +161,60 @@ export function BookingForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <Label htmlFor="voornaam">Voornaam</Label>
+          <Label htmlFor="naam">Naam</Label>
           <Input
-            id="voornaam"
-            value={form.voornaam}
-            onChange={(e) => update("voornaam", e.target.value)}
-            placeholder="Bijv. Jan"
-            aria-invalid={!!errors.voornaam}
+            id="naam"
+            value={form.naam}
+            onChange={(e) => update("naam", e.target.value)}
+            placeholder="Voor- en achternaam"
+            aria-invalid={!!errors.naam}
           />
-          {errors.voornaam && (
-            <p className="mt-2 text-xs text-red-400">{errors.voornaam}</p>
-          )}
+          {errors.naam && <p className="mt-2 text-xs text-red-400">{errors.naam}</p>}
         </div>
 
         <div>
-          <Label htmlFor="achternaam">Achternaam</Label>
+          <Label htmlFor="telefoon">Telefoonnummer</Label>
           <Input
-            id="achternaam"
-            value={form.achternaam}
-            onChange={(e) => update("achternaam", e.target.value)}
-            placeholder="Bijv. de Vries"
-            aria-invalid={!!errors.achternaam}
+            id="telefoon"
+            type="tel"
+            value={form.telefoon}
+            onChange={(e) => update("telefoon", e.target.value)}
+            placeholder="06 12 34 56 78"
+            aria-invalid={!!errors.telefoon}
           />
-          {errors.achternaam && (
-            <p className="mt-2 text-xs text-red-400">{errors.achternaam}</p>
+          {errors.telefoon && (
+            <p className="mt-2 text-xs text-red-400">{errors.telefoon}</p>
           )}
         </div>
       </div>
 
       <div>
-        <Label htmlFor="telefoon">Telefoonnummer</Label>
+        <Label htmlFor="email">E-mailadres</Label>
         <Input
-          id="telefoon"
-          type="tel"
-          value={form.telefoon}
-          onChange={(e) => update("telefoon", e.target.value)}
-          placeholder="06 12 34 56 78"
-          aria-invalid={!!errors.telefoon}
+          id="email"
+          type="email"
+          value={form.email}
+          onChange={(e) => update("email", e.target.value)}
+          placeholder="naam@voorbeeld.nl"
+          aria-invalid={!!errors.email}
         />
-        {errors.telefoon && (
-          <p className="mt-2 text-xs text-red-400">{errors.telefoon}</p>
-        )}
+        {errors.email && <p className="mt-2 text-xs text-red-400">{errors.email}</p>}
       </div>
 
       <div>
         <div className="grid gap-6 sm:grid-cols-[1fr_auto_1fr] sm:items-start">
           <div>
-            <Label htmlFor="ophaaladres">Ophaaladres</Label>
-            <Input
-              id="ophaaladres"
-              value={form.ophaaladres}
-              onChange={(e) => update("ophaaladres", e.target.value)}
+            <Label htmlFor="ophaallocatie">Ophaallocatie</Label>
+            <AddressInput
+              id="ophaallocatie"
+              value={form.ophaallocatie}
+              onChange={(value) => update("ophaallocatie", value)}
               placeholder="Straat, huisnummer, plaats"
-              aria-invalid={!!errors.ophaaladres}
+              aria-invalid={!!errors.ophaallocatie}
             />
-            {errors.ophaaladres && (
+            {errors.ophaallocatie && (
               <p className="mt-2 text-xs text-red-400">
-                {errors.ophaaladres}
+                {errors.ophaallocatie}
               </p>
             )}
           </div>
@@ -213,10 +225,10 @@ export function BookingForm() {
 
           <div>
             <Label htmlFor="bestemming">Bestemming</Label>
-            <Input
+            <AddressInput
               id="bestemming"
               value={form.bestemming}
-              onChange={(e) => update("bestemming", e.target.value)}
+              onChange={(value) => update("bestemming", value)}
               placeholder="Straat, huisnummer, plaats"
               aria-invalid={!!errors.bestemming}
             />
@@ -227,16 +239,14 @@ export function BookingForm() {
         </div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <Label htmlFor="datum">Datum</Label>
-          <Input
-            id="datum"
-            type="date"
-            min={minDate}
+          <DatePicker
             value={form.datum}
-            onChange={(e) => update("datum", e.target.value)}
-            aria-invalid={!!errors.datum}
+            onChange={(date) => update("datum", date)}
+            minDate={minDate}
+            invalid={!!errors.datum}
           />
           {errors.datum && (
             <p className="mt-2 text-xs text-red-400">{errors.datum}</p>
@@ -245,18 +255,28 @@ export function BookingForm() {
 
         <div>
           <Label htmlFor="tijd">Tijdstip</Label>
-          <Input
+          <Select
             id="tijd"
-            type="time"
             value={form.tijd}
             onChange={(e) => update("tijd", e.target.value)}
             aria-invalid={!!errors.tijd}
-          />
+          >
+            <option value="" disabled>
+              Kies een tijdstip
+            </option>
+            {TIME_OPTIONS.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </Select>
           {errors.tijd && (
             <p className="mt-2 text-xs text-red-400">{errors.tijd}</p>
           )}
         </div>
+      </div>
 
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <Label htmlFor="personen">Aantal personen</Label>
           <Select
@@ -271,6 +291,21 @@ export function BookingForm() {
             ))}
           </Select>
         </div>
+
+        <div>
+          <Label htmlFor="koffers">Aantal koffers</Label>
+          <Select
+            id="koffers"
+            value={form.koffers}
+            onChange={(e) => update("koffers", e.target.value)}
+          >
+            {Array.from({ length: 7 }, (_, i) => i).map((n) => (
+              <option key={n} value={n}>
+                {n === 0 ? "Geen koffers" : `${n} ${n === 1 ? "koffer" : "koffers"}`}
+              </option>
+            ))}
+          </Select>
+        </div>
       </div>
 
       <div>
@@ -279,7 +314,7 @@ export function BookingForm() {
           id="opmerkingen"
           value={form.opmerkingen}
           onChange={(e) => update("opmerkingen", e.target.value)}
-          placeholder="Bijv. extra bagage, kinderzitje, rolstoeltoegankelijkheid..."
+          placeholder="Bijv. kinderzitje, rolstoeltoegankelijkheid..."
         />
       </div>
 
