@@ -1,13 +1,12 @@
 export const SITE = {
-  name: "RB Taxi",
+  name: "Noorder Taxi",
   tagline: "Persoonlijk vervoer, vakkundig gereden.",
   phone: "+31 6 12 34 56 78",
   phoneHref: "tel:+31612345678",
   whatsapp: "31612345678",
-  email: "info@rbtaxi.nl",
-  address: "Herengracht 182, 1016 BR Amsterdam",
-  kvk: "87654321",
-  btw: "NL864729301B01",
+  email: "info@noordertaxi.nl",
+  kvk: "42055928",
+  btw: "NL005460137B10",
 };
 
 export const NAV_LINKS = [
@@ -49,7 +48,7 @@ export const SERVICES = [
     description:
       "Ook laat op de avond of midden in de nacht rijden wij, met dezelfde stiptheid en zorg.",
     detail:
-      "RB Taxi is 24 uur per dag op afspraak beschikbaar. Een late vlucht, een nachtdienst of een feestje dat uitloopt: u wordt altijd veilig thuisgebracht.",
+      "Noorder Taxi is 24 uur per dag op afspraak beschikbaar. Een late vlucht, een nachtdienst of een feestje dat uitloopt: u wordt altijd veilig thuisgebracht.",
   },
   {
     slug: "lange-afstanden",
@@ -133,7 +132,7 @@ export const REVIEWS = [
     location: "Amstelveen",
     rating: 5,
     quote:
-      "Wij gebruiken RB Taxi voor al ons zakelijk vervoer. Altijd stipt en de facturatie is moeiteloos geregeld.",
+      "Wij gebruiken Noorder Taxi voor al ons zakelijk vervoer. Altijd stipt en de facturatie is moeiteloos geregeld.",
   },
   {
     name: "R. Jansen",

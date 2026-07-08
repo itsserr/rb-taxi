@@ -2,7 +2,7 @@ import { SITE } from "@/lib/constants";
 
 export function WhatsAppButton() {
   const message = encodeURIComponent(
-    "Goedendag, ik wil graag een rit reserveren bij RB Taxi."
+    "Goedendag, ik wil graag een rit reserveren bij Noorder Taxi."
   );
 
   return (

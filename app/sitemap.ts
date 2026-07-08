@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.rbtaxi.nl";
+  const base = "https://www.noordertaxi.nl";
   const routes = ["", "/reserveren", "/diensten", "/over-ons", "/contact"];
 
   return routes.map((route) => ({

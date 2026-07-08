@@ -47,7 +47,7 @@ export function Header() {
             className="group flex items-baseline gap-2.5 transition-opacity duration-200 hover:opacity-90"
           >
             <span className="font-display text-xl tracking-wide text-foreground sm:text-2xl">
-              RB
+              Noorder
             </span>
             <span className="h-3 w-px bg-navy-light/60" aria-hidden="true" />
             <span className="text-[10px] uppercase tracking-widest2 text-muted sm:text-xs">

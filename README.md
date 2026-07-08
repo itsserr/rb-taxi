@@ -1,6 +1,6 @@
-# RB Taxi — website
+# Noorder Taxi — website
 
-Premium, minimalistische website voor RB Taxi, gebouwd met Next.js 15 (App
+Premium, minimalistische website voor Noorder Taxi, gebouwd met Next.js 15 (App
 Router), TypeScript en Tailwind CSS.
 
 ## Aan de slag

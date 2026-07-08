@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { RouteLine } from "@/components/ui/route-line";
 
@@ -10,7 +10,9 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div>
             <Link href="/" className="flex items-baseline gap-2">
-              <span className="font-display text-2xl text-foreground">RB</span>
+              <span className="font-display text-2xl text-foreground">
+                Noorder
+              </span>
               <span className="text-xs uppercase tracking-widest2 text-muted">
                 Taxi
               </span>
@@ -54,10 +56,6 @@ export function Footer() {
                 >
                   {SITE.email}
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-navy-light" />
-                <span>{SITE.address}</span>
               </li>
             </ul>
           </div>

@@ -10,7 +10,7 @@ const ICONS = [Plane, Briefcase, User, Moon, Route, CalendarClock];
 export const metadata: Metadata = {
   title: "Diensten",
   description:
-    "Luchthavenvervoer, zakelijk en particulier vervoer, nachtelijke ritten, lange afstanden en vervoer op afspraak — alle diensten van RB Taxi op een rij.",
+    "Luchthavenvervoer, zakelijk en particulier vervoer, nachtelijke ritten, lange afstanden en vervoer op afspraak — alle diensten van Noorder Taxi op een rij.",
 };
 
 export default function DienstenPage() {
@@ -24,7 +24,7 @@ export default function DienstenPage() {
           </h1>
           <p className="mt-6 text-base leading-relaxed text-muted">
             Van een vroege luchthaventransfer tot een zakelijke afspraak of een
-            late rit naar huis: RB Taxi is 24 uur per dag op afspraak
+            late rit naar huis: Noorder Taxi is 24 uur per dag op afspraak
             beschikbaar, met dezelfde stiptheid en zorg bij elke rit.
           </p>
         </div>

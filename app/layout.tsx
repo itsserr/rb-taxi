@@ -21,34 +21,34 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rbtaxi.nl"),
+  metadataBase: new URL("https://www.noordertaxi.nl"),
   title: {
-    default: "RB Taxi | Exclusief taxivervoer in Amsterdam en omgeving",
-    template: "%s | RB Taxi",
+    default: "Noorder Taxi | Exclusief taxivervoer in Amsterdam en omgeving",
+    template: "%s | Noorder Taxi",
   },
   description:
-    "RB Taxi verzorgt persoonlijk, hoogwaardig taxivervoer voor luchthaventransfers, zakelijke ritten en speciale gelegenheden. Reserveer eenvoudig online, telefonisch bevestigd.",
+    "Noorder Taxi verzorgt persoonlijk, hoogwaardig taxivervoer voor luchthaventransfers, zakelijke ritten en speciale gelegenheden. Reserveer eenvoudig online, telefonisch bevestigd.",
   keywords: [
     "taxi Amsterdam",
     "luxe taxi",
     "luchthaventransfer Schiphol",
     "zakelijk taxivervoer",
     "chauffeursservice",
-    "RB Taxi",
+    "Noorder Taxi",
   ],
-  authors: [{ name: "RB Taxi" }],
+  authors: [{ name: "Noorder Taxi" }],
   openGraph: {
     type: "website",
     locale: "nl_NL",
-    siteName: "RB Taxi",
-    title: "RB Taxi | Exclusief taxivervoer in Amsterdam en omgeving",
+    siteName: "Noorder Taxi",
+    title: "Noorder Taxi | Exclusief taxivervoer in Amsterdam en omgeving",
     description:
       "Persoonlijk, hoogwaardig taxivervoer. Luchthaventransfers, zakelijke ritten en speciale gelegenheden — telefonisch bevestigd.",
-    url: "https://www.rbtaxi.nl",
+    url: "https://www.noordertaxi.nl",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RB Taxi | Exclusief taxivervoer in Amsterdam en omgeving",
+    title: "Noorder Taxi | Exclusief taxivervoer in Amsterdam en omgeving",
     description:
       "Persoonlijk, hoogwaardig taxivervoer. Reserveer eenvoudig, telefonisch bevestigd.",
   },

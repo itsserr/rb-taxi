@@ -9,7 +9,7 @@ import { CtaSection } from "@/components/sections/cta-section";
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Het verhaal achter RB Taxi: persoonlijk taxivervoer, gebouwd op betrouwbaarheid, vakmanschap en aandacht voor de reiziger.",
+    "Het verhaal achter Noorder Taxi: persoonlijk taxivervoer, gebouwd op betrouwbaarheid, vakmanschap en aandacht voor de reiziger.",
 };
 
 const VALUES = [
@@ -44,7 +44,7 @@ export default function OverOnsPage() {
               Gebouwd op vertrouwen, rit na rit
             </h1>
             <p className="mt-6 text-base leading-relaxed text-muted">
-              RB Taxi is opgericht vanuit een eenvoudige overtuiging: een
+              Noorder Taxi is opgericht vanuit een eenvoudige overtuiging: een
               taxirit moet zorgeloos zijn, van de eerste bevestiging tot de
               laatste stap uit de auto. Wat begon als een kleine, lokale
               onderneming is uitgegroeid tot een vaste naam voor reizigers en

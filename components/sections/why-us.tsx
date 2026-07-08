@@ -8,9 +8,9 @@ export function WhyUs() {
     <section className="section-y border-t border-white/5 bg-surface">
       <div className="container-luxe">
         <div className="mb-16 max-w-xl sm:mb-20">
-          <p className="eyebrow mb-4">Waarom RB Taxi</p>
+          <p className="eyebrow mb-4">Waarom Noorder Taxi</p>
           <h2 className="font-display text-3xl italic text-foreground sm:text-4xl">
-            Waarom kiezen voor RB Taxi?
+            Waarom kiezen voor Noorder Taxi?
           </h2>
         </div>
 

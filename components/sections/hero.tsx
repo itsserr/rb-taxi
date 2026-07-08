@@ -66,7 +66,7 @@ export function Hero() {
         </p>
 
         <h1 className="mt-7 animate-fade-up font-display text-7xl italic leading-[0.95] tracking-tight text-foreground opacity-0 [animation-delay:0.28s] sm:text-8xl lg:text-9xl">
-          RB Taxi
+          Noorder Taxi
         </h1>
 
         <span className="mt-8 h-px w-16 origin-center animate-fade-up bg-gradient-to-r from-transparent via-navy-light to-transparent opacity-0 [animation-delay:0.42s]" />

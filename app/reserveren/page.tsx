@@ -7,7 +7,7 @@ import { SITE } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Reserveren",
   description:
-    "Reserveer eenvoudig uw taxirit bij RB Taxi. Minimaal 24 uur van tevoren, telefonisch bevestigd.",
+    "Reserveer eenvoudig uw taxirit bij Noorder Taxi. Minimaal 24 uur van tevoren, telefonisch bevestigd.",
 };
 
 export default function ReserverenPage() {
