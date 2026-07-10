@@ -18,7 +18,9 @@ type AddressInputProps = Omit<InputProps, "value" | "onChange"> & {
 export function AddressInput({ value, onChange, className, ...props }: AddressInputProps) {
   const [suggestions, setSuggestions] = React.useState<Suggestion[]>([]);
   const [open, setOpen] = React.useState(false);
-  const debounceRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  );
   const abortRef = React.useRef<AbortController | null>(null);
 
   React.useEffect(() => {

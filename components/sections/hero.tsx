@@ -1,16 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
-
-const TaxiSignScene = dynamic(
-  () => import("@/components/three/taxi-sign-scene").then((m) => m.TaxiSignScene),
-  { ssr: false }
-);
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,28 +45,35 @@ export function Hero() {
       ref={sectionRef}
       className="relative flex h-[100svh] w-full flex-col overflow-hidden bg-background"
     >
-      <div className="absolute inset-0">
-        <TaxiSignScene />
-      </div>
+      <Image
+        src="/noorder-taxi-vito.png"
+        alt="Mercedes-Benz Vito van Noorder Taxi met daklicht, geparkeerd in een Nederlandse straat"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[62%_center] sm:object-center"
+      />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(6,8,16,0.5)_100%)]" />
+      {/* Legibility scrim: base tint, then a bottom-weighted gradient behind the copy. */}
+      <div className="pointer-events-none absolute inset-0 bg-background/30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background/85" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(6,8,16,0.55)_100%)]" />
 
       <div
         ref={textRef}
-        className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-start pt-24 text-center sm:pt-28"
+        className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-center text-center"
       >
         <p className="eyebrow animate-fade-up opacity-0 [animation-delay:0.1s]">
           Taxivervoer op maat
         </p>
 
-        <h1 className="mt-7 animate-fade-up font-display text-7xl italic leading-[0.95] tracking-tight text-foreground opacity-0 [animation-delay:0.28s] sm:text-8xl lg:text-9xl">
+        <h1 className="mt-7 animate-fade-up font-display text-6xl italic leading-[0.95] tracking-tight text-foreground [text-shadow:0_2px_24px_rgba(0,0,0,0.65)] opacity-0 [animation-delay:0.28s] sm:text-8xl lg:text-9xl">
           Noorder Taxi
         </h1>
 
         <span className="mt-8 h-px w-16 origin-center animate-fade-up bg-gradient-to-r from-transparent via-navy-light to-transparent opacity-0 [animation-delay:0.42s]" />
 
-        <p className="mt-8 max-w-lg animate-fade-up text-balance text-base leading-relaxed text-muted opacity-0 [animation-delay:0.52s] sm:text-lg">
+        <p className="mt-8 max-w-lg animate-fade-up text-balance text-base leading-relaxed text-foreground/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)] opacity-0 [animation-delay:0.52s] sm:text-lg">
           Luxe en betrouwbaar taxivervoer, 24/7 beschikbaar op afspraak.
         </p>
 
@@ -92,7 +94,7 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="h-16 w-full px-10 text-base tracking-wide sm:w-auto"
+              className="h-16 w-full bg-background/40 px-10 text-base tracking-wide backdrop-blur-sm sm:w-auto"
             >
               <Phone className="h-4 w-4" />
               Bel direct
