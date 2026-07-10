@@ -51,55 +51,55 @@ export function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[62%_center] sm:object-center"
+        className="scale-105 object-cover object-[42%_center] brightness-105 contrast-[1.03] sm:object-center"
       />
 
-      {/* Legibility scrim: base tint, then a bottom-weighted gradient behind the copy. */}
-      <div className="pointer-events-none absolute inset-0 bg-background/30" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background/85" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(6,8,16,0.55)_100%)]" />
+      {/* Directional scrim: dark behind the copy, clear over the van on the right. */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/10 sm:via-background/55 sm:to-transparent" />
+      {/* Soften the top for the nav, and melt the bottom edge into the next section. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background via-background/70 to-transparent" />
 
-      <div
-        ref={textRef}
-        className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-center text-center"
-      >
-        <p className="eyebrow animate-fade-up opacity-0 [animation-delay:0.1s]">
-          Taxivervoer op maat
-        </p>
+      <div className="container-luxe relative z-10 flex flex-1 items-center">
+        <div ref={textRef} className="max-w-xl">
+          <p className="eyebrow animate-fade-up opacity-0 [animation-delay:0.1s]">
+            Taxivervoer op maat
+          </p>
 
-        <h1 className="mt-7 animate-fade-up font-display text-6xl italic leading-[0.95] tracking-tight text-foreground [text-shadow:0_2px_24px_rgba(0,0,0,0.65)] opacity-0 [animation-delay:0.28s] sm:text-8xl lg:text-9xl">
-          Noorder Taxi
-        </h1>
+          <h1 className="mt-6 animate-fade-up font-display text-5xl italic leading-[1.02] tracking-tight text-foreground [text-shadow:0_2px_28px_rgba(0,0,0,0.7)] opacity-0 [animation-delay:0.28s] sm:text-7xl lg:text-8xl">
+            Noorder Taxi
+          </h1>
 
-        <span className="mt-8 h-px w-16 origin-center animate-fade-up bg-gradient-to-r from-transparent via-navy-light to-transparent opacity-0 [animation-delay:0.42s]" />
+          <span className="mt-7 block h-px w-16 animate-fade-up bg-gradient-to-r from-navy-light to-transparent opacity-0 [animation-delay:0.42s]" />
 
-        <p className="mt-8 max-w-lg animate-fade-up text-balance text-base leading-relaxed text-foreground/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)] opacity-0 [animation-delay:0.52s] sm:text-lg">
-          Luxe en betrouwbaar taxivervoer, 24/7 beschikbaar op afspraak.
-        </p>
+          <p className="mt-7 max-w-md animate-fade-up text-balance text-base leading-relaxed text-foreground/90 [text-shadow:0_1px_14px_rgba(0,0,0,0.75)] opacity-0 [animation-delay:0.52s] sm:text-lg">
+            Luxe en betrouwbaar taxivervoer, 24/7 beschikbaar op afspraak.
+          </p>
 
-        <div className="mt-12 flex animate-fade-up flex-col items-center gap-4 opacity-0 [animation-delay:0.68s] sm:flex-row">
-          <Link href="/reserveren" className="w-full sm:w-auto">
-            <Button
-              size="lg"
-              className="group relative h-16 w-full overflow-hidden px-12 text-base tracking-wide sm:w-auto"
-            >
-              <span className="relative z-10 flex items-center gap-2.5">
-                Reserveer een rit
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-              <span className="pointer-events-none absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
-            </Button>
-          </Link>
-          <a href={SITE.phoneHref} className="w-full sm:w-auto">
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-16 w-full bg-background/40 px-10 text-base tracking-wide backdrop-blur-sm sm:w-auto"
-            >
-              <Phone className="h-4 w-4" />
-              Bel direct
-            </Button>
-          </a>
+          <div className="mt-10 flex animate-fade-up flex-col gap-4 opacity-0 [animation-delay:0.68s] sm:flex-row sm:items-center">
+            <Link href="/reserveren" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="group relative h-16 w-full overflow-hidden px-12 text-base tracking-wide sm:w-auto"
+              >
+                <span className="relative z-10 flex items-center gap-2.5">
+                  Reserveer een rit
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+                <span className="pointer-events-none absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              </Button>
+            </Link>
+            <a href={SITE.phoneHref} className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-16 w-full border-white/25 bg-background/30 px-10 text-base tracking-wide backdrop-blur-sm sm:w-auto"
+              >
+                <Phone className="h-4 w-4" />
+                Bel direct
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
     </section>
