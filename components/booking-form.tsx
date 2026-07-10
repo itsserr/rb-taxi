@@ -105,6 +105,15 @@ export function BookingForm() {
             {form.tijd}
           </p>
         )}
+        <p className="mt-4 text-xs text-muted-2">
+          Vragen over uw aanvraag? Mail ons op{" "}
+          <a
+            href={`mailto:${SITE.email}`}
+            className="text-navy-light transition-colors hover:text-foreground"
+          >
+            {SITE.email}
+          </a>
+        </p>
         <Button
           variant="outline"
           className="mt-8"
@@ -320,7 +329,13 @@ export function BookingForm() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-2">
-          Liever direct bellen? {SITE.phone}
+          Liever direct bellen? {SITE.phone} &middot; of mail{" "}
+          <a
+            href={`mailto:${SITE.email}`}
+            className="transition-colors hover:text-foreground"
+          >
+            {SITE.email}
+          </a>
         </p>
         <Button type="submit" size="lg" className="w-full sm:w-auto">
           Reservering Aanvragen
