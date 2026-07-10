@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div>
             <Link href="/" className="flex items-baseline gap-2">
-              <span className="font-display text-2xl text-foreground">
+              <span className="font-display text-2xl uppercase text-foreground">
                 Noorder
               </span>
               <span className="text-xs uppercase tracking-widest2 text-muted">

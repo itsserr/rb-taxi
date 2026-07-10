@@ -46,7 +46,7 @@ export function Header() {
             href="/"
             className="group flex items-baseline gap-2.5 transition-opacity duration-200 hover:opacity-90"
           >
-            <span className="font-display text-xl tracking-wide text-foreground sm:text-2xl">
+            <span className="font-display text-xl uppercase tracking-wide text-foreground sm:text-2xl">
               Noorder
             </span>
             <span className="h-3 w-px bg-navy-light/60" aria-hidden="true" />
