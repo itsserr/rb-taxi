@@ -59,7 +59,7 @@ export function DatePicker({
               disabled={{ before: minDate }}
               defaultMonth={value ?? minDate}
               showOutsideDays
-              className="rdp-rb-taxi"
+              className="rdp-noorder-taxi"
             />
           </div>
         </>
